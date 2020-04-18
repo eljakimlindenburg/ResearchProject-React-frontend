@@ -35,7 +35,7 @@ class HomePage extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/pages/1')
+        fetch('http://localhost:3000/pages')
             .then(response => response.json())
             .then(data => this.setState({pages: data}));
     }
