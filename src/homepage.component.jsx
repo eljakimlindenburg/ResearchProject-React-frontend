@@ -8,32 +8,45 @@ class HomePage extends Component {
         this.state = {
             pages: [
                 {
-                id: {},
-                content: {
-                    books: [
-
-                    ],
-                    reviews: []
+                    id: '',
+                    content: [
+                        {
+                            id: '',
+                            title: '',
+                            author: '',
+                            desc: '',
+                            price: '',
+                            average_rating: '',
+                            image_src: '',
+                            reviews: [
+                                {
+                                    id: '',
+                                    author_name: '',
+                                    title: '',
+                                    timestamp: '',
+                                    rating: '',
+                                    comment: ''
+                                }]
+                        }
+                    ]
                 }
-            }
             ]
         };
     }
 
-    componentDidMount()
-    {
+    componentDidMount() {
         fetch('http://localhost:3000/pages/1')
             .then(response => response.json())
-            .then(data => this.setState({page: data}));
+            .then(data => this.setState({pages: data}));
     }
 
     render() {
         return (
-           <div className='Books'>
-               {this.state.books.map(book => (
-                   <h1 key={book.id}> {book.title} </h1>
-               ))}
-           </div>
+            <div className='Books'>
+                {this.state.pages[0].content.map(book => (
+                    <h1 key={book.id}> {book.title} </h1>
+                ))}
+            </div>
         );
     }
 }
