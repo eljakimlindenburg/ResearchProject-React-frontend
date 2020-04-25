@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {BookList} from "../../components/book-list/book-list.component";
 
 class HomePage extends Component {
 
@@ -42,10 +43,11 @@ class HomePage extends Component {
 
     render() {
         return (
-            <div className='Books'>
-                {this.state.pages[0].content.map(book => (
-                    <h1 key={book.id}> {book.title} </h1>
-                ))}
+            <div className='container'>
+                <div className='row'>
+                    <BookList pages={this.state.pages}>
+                    </BookList>
+                </div>
             </div>
         );
     }
