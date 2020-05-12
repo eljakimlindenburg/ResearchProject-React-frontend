@@ -1,10 +1,10 @@
 import React from 'react';
-import { Book } from '../book/book.component';
+import {ItemCard} from "../../shared/itemcard/itemcard.component";
 
 export const BookList = props => (
-    <div className='col-sm-4'>
+    <div>
         {props.pages[0].content.map(book => (
-            <Book key={book.id} book={book} />
+            <ItemCard key={book.id} book={book} />
         ))}
     </div>
 );

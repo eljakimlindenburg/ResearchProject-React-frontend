@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BookList} from "../../components/book-list/book-list.component";
+import {CartModal} from "../cartmodal/cartmodal.component";
 
 class HomePage extends Component {
 
@@ -45,8 +46,10 @@ class HomePage extends Component {
         return (
             <div className='container'>
                 <div className='row'>
-                    <BookList pages={this.state.pages}>
-                    </BookList>
+                    <div className='col-sm-4'>
+                        <BookList pages={this.state.pages}/>
+                    </div>
+                    <CartModal></CartModal>
                 </div>
             </div>
         );
