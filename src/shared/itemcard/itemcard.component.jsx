@@ -1,37 +1,47 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
+export class ItemCard extends React.Component {
 
-export const ItemCard = props => (
+    constructor(props) {
+        super(props);
+        this.state = this.setState(props);
+    }
 
-    <div className='card'>
-        <img src={props.book.image_src} alt="" class="card-img-top"/>
-        <div className='card-body'>
-            <h3 className='card-title text-primary'><a href={'/detailpage/' + props.book.id}>{props.book.title}</a></h3>
-            <h4 className='card-price'>${props.book.price}</h4>
-            <p className='card-text'>{props.book.desc}</p>
-        </div>
+    render () {
+        return (
+            <div className='card'>
+                <img src={this.props.item.image_src} alt="" className="card-img-top"/>
+                <div className='card-body'>
+                    <h3 className='card-title text-primary'>
+                        <Link to={'/detailpage/' + this.props.item.id}>{this.props.item.title}</Link></h3>
+                    <h4 className='card-price'>${this.props.item.price}</h4>
+                    <p className='card-text'>{this.props.item.desc}</p>
+                </div>
 
-        <div className='card-body bg-light border-top'>
+                <div className='card-body bg-light border-top'>
 
-            <div className='float-left'>
-                <i className="far fa-star fa-sm"></i>
-                <i className="far fa-star fa-sm"></i>
-                <i className="far fa-star fa-sm"></i>
-                <i className="far fa-star fa-sm"></i>
-                <i className="far fa-star fa-sm"></i>
+                    <div className='float-left'>
+                        <i className="far fa-star fa-sm"/>
+                        <i className="far fa-star fa-sm"/>
+                        <i className="far fa-star fa-sm"/>
+                        <i className="far fa-star fa-sm"/>
+                        <i className="far fa-star fa-sm"/>
+                    </div>
+
+                    <div className="float-right">
+                        <button className="btn btn-secondary">
+                            <i className="far fa-heart fa-sm"/>
+                        </button>
+
+                        <button className="btn btn-primary">
+                            <i className="fas fa-shopping-basket fa-sm"/>
+                        </button>
+                    </div>
+                </div>
             </div>
+        )
+    }
+}
 
-
-            <div class="float-right">
-                <button class="btn btn-secondary">
-                    <i class="far fa-heart fa-sm"></i>
-                </button>
-
-                <button class="btn btn-primary" onclick="AddToBasket">
-                <i class="fas fa-shopping-basket fa-sm" ></i>
-            </button>
-        </div>
-
-    </div>
-</div>
-);
+export default ItemCard;

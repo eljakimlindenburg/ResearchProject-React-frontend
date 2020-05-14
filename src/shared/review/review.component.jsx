@@ -1,33 +1,78 @@
-import React from "react";
+import React, {Component} from "react";
 
-const Review = props => (
-    <div className="card mt-3">
-        <div className="card-header">Reviews</div>
+export class Review extends Component {
+    constructor(props) {
+        super(props);
 
-        <div className="card-body">
-            <div className="float-left mr-3">
+        this.state = {
+            reviews: props
+        }
+    };
 
-                <i className="fas fa-star fa-sm" style="color:#ffd800"></i>
+    createStars = props => {
+        let stars = [];
+        const nrOfStars = props.review.rating / 20;
+        const maxStars = 5;
+        for (var i = 0; i < nrOfStars; i++) {
+            stars.push(<i className="fas fa-star fa-sm" style={{color: "#ffd800"}}/>)
+        }
+        if (maxStars > nrOfStars) {
+            var starsLeft = maxStars - nrOfStars;
+            for (var j = 0; j < starsLeft; j++) {
+                stars.push(<i className="far fa-star fa-sm"/>)
+            }
+        }
+    };
 
-                <i className="far fa-star fa-sm"></i>
+    createReviews = () => {
+        let reviewDivs = [];
+        const reviews = this.state.reviews;
+        for (const [index, review] of reviews) {
+            reviewDivs.push(
+                <div className="card-body">
+                    <div className="float-left mr-3">
+                        {this.createStars(review)}
+                    </div>
+                    <span> | </span>
+                    <p className="card-title text-primary ml-3" style={{display: "inline-block"}}>{review.title}</p>
+                    <p className="card-text">
+                        {review.comment}
+                    </p>
+                    <p className="card-author card-text">
+                        <small>
+                            Posted by {review.author_name} on 30/03/2020
+                        </small>
+                    </p>
+                    {(() => {
+                        if (!reviews.entries().next() == null) { return (
+                                <hr/>
+                            )
+                        }
+                    })()}
+                </div>)
+        }
+    };
+
+    render() {
+        const reviews = [this.state.reviews];
+        return (
+            <div className="card mt-3">
+                <div className="card-header">Reviews>
+                    {(() => {
+                        if (reviews == null) {
+                            return (
+                                <p><em>Loading...</em></p>
+                            )
+                        } else {
+                            return (
+                                <div>{this.createReviews()}</div>
+                            );
+                        }
+                    })()}
+                </div>
             </div>
-            <span> | </span>
-            <p className="card-title text-primary ml-3" style="display:inline-block;">{props.title}</p>
-
-            <p className="card-text">
-                {props.comment}
-            </p>
-
-            <p className="card-author card-text">
-                <small>
-                    'Posted by ${props.author_name} on 30/03/2020'
-                </small>
-            </p>
-        </div>
-
-            <hr/>
-
-    </div>
-);
+        );
+    }
+}
 
 export default Review;

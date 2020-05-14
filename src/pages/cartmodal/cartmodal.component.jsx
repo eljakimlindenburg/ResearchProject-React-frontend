@@ -1,12 +1,10 @@
 import React from "react";
-import {Link} from "react-router-dom";
 
 export const CartModal = props => (
-  <Link to="/modal-test">
+  <div>
       <h3>CartModal</h3>
 
-      <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-           aria-hidden="true">
+      <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
               <div className="modal-content">
                   <div className="modal-header">
@@ -25,5 +23,5 @@ export const CartModal = props => (
               </div>
           </div>
       </div>
-  </Link>
+  </div>
 );

@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-const navMenu = () => (
+export const NavMenu = () => (
 <div>
     <div className="top-row pl-4 navbar navbar-dark">
         <a className="navbar-brand" href="">React</a>
@@ -31,4 +31,4 @@ const navMenu = () => (
 </div>
 );
 
-export default navMenu;
+export default NavMenu;
