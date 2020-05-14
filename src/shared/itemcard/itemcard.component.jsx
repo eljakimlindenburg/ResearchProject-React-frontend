@@ -8,15 +8,24 @@ export class ItemCard extends React.Component {
         this.state = this.setState(props);
     }
 
+
+    
+    componentDidMount(){
+        
+    }
+
     render () {
         return (
             <div className='card'>
                 <img src={this.props.item.image_src} alt="" className="card-img-top"/>
                 <div className='card-body'>
                     <h3 className='card-title text-primary'>
-                        <Link to={'/detailpage/' + this.props.item.id}>{this.props.item.title}</Link></h3>
+                        <Link to={{
+                            pathname: '/detail/' + this.props.item.id,
+                            state: this.props}}>{this.props.item.title}</Link></h3>
                     <h4 className='card-price'>${this.props.item.price}</h4>
                     <p className='card-text'>{this.props.item.desc}</p>
+                   
                 </div>
 
                 <div className='card-body bg-light border-top'>

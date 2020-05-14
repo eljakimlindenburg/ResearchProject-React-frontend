@@ -12,34 +12,47 @@ export class IndexPage extends Component {
     };
 
     async componentDidMount() {
-        const url = 'http://localhost:3000/books';
-        const response = await fetch(url);
+        const url = 'http://localhost:3333/items';
+        const response = await fetch(url, {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept': 'application/json'
+            }
+        });
         const json = await response.json();
-        this.setState({books: json});
+
+        console.log(json);
+        
+
+       this.setState({books: json}); 
     }
 
     render() {
         const books = [this.state.books];
         return (
             <div className='container'>
-                <div className='row'>
+                
                     {(() => {
                         if (books == null) {
                             return (
-                                <p><em>Loading...</em></p>
+                                <div className="row">
+                                    <p><em>Loading...</em></p>
+                                </div>
                             )
                         } else {
                             return (
-                                <div className='col-sm-4'>
+                                    <div className="row">
                                     {this.state.books.map(book => (
-                                        <ItemCard key={book.id} item={book} />
+                                        <div className='col-sm-4'>
+                                            <ItemCard key={book.id} item={book} />
+                                        </div>
                                     ))}
-                                </div>
+                                    </div>
+                                
                             );
                         }
                     })()}
                 </div>
-            </div>
         );
     }
 }

@@ -5,9 +5,12 @@ export class ProductInfo extends Component {
         super(props);
 
         this.state = {
-            product: props
+            product: props.product
         }
+
+        console.log(this.state.product);
     };
+
 
     createStars = () => {
         let stars = [];
@@ -28,7 +31,7 @@ export class ProductInfo extends Component {
     render() {
         return (
             <div className="card" id="productInfo">
-                <img src={this.state.product.img_src} alt="" className="card-img-top" style={{maxHeight: "400px"}}/>
+                <img src={this.state.product.image_src} alt="" className="card-img-top" style={{maxHeight: "400px"}}/>
                 <div className="card-body">
                     <h1 className="card-title text-primary">{this.state.product.title}</h1>
                     <h2 className="card-price">€{this.state.product.price}</h2>

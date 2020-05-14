@@ -4,12 +4,13 @@ export class Review extends Component {
     constructor(props) {
         super(props);
 
+        
         this.state = {
-            reviews: props
+            ...props
         }
     };
 
-    createStars = props => {
+   /* createStars = props => {
         let stars = [];
         const nrOfStars = props.review.rating / 20;
         const maxStars = 5;
@@ -22,16 +23,20 @@ export class Review extends Component {
                 stars.push(<i className="far fa-star fa-sm"/>)
             }
         }
-    };
+    }; */
+    
 
     createReviews = () => {
         let reviewDivs = [];
         const reviews = this.state.reviews;
-        for (const [index, review] of reviews) {
+
+        console.log(reviews);
+
+        reviews.forEach( review => 
             reviewDivs.push(
                 <div className="card-body">
                     <div className="float-left mr-3">
-                        {this.createStars(review)}
+                        
                     </div>
                     <span> | </span>
                     <p className="card-title text-primary ml-3" style={{display: "inline-block"}}>{review.title}</p>
@@ -44,13 +49,16 @@ export class Review extends Component {
                         </small>
                     </p>
                     {(() => {
-                        if (!reviews.entries().next() == null) { return (
+                        if (!Object.keys(reviews).entries().next() == null) { return (
                                 <hr/>
                             )
                         }
                     })()}
-                </div>)
-        }
+                </div>))
+       
+        
+
+        return reviewDivs;
     };
 
     render() {

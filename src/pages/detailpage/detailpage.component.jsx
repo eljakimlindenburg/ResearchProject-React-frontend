@@ -7,30 +7,49 @@ export class DetailPage extends Component {
         super(props);
 
         this.state = {
-            book: props
+            book: null,
+            //book: this.props,
+            test: "one and a two"
         }
     };
+
+    async componentDidMount(){
+        const { id } = this.props.match.params;
+        const url = 'http://localhost:3333/items/'+ id;
+        const response = await fetch(url, {
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'Accept': 'application/json'
+                }
+            });
+        
+        const json = await response.json();
+
+        this.setState({book: json}); 
+
+        console.log(this.state.book);
+    }
 
     render() {
         const book = [this.state.book];
         return (
             <div className='container'>
                 <div className='row'>
-                    {(() => {
-                        if (book == null) {
+                   
+                   {(() => {
+                        if (this.state.book == null) {
                             return (
-                                <p><em>Loading...</em></p>
+                                <div className="row">
+                                    <p><em>Loading...</em></p>
+                                </div>
                             )
                         } else {
                             return (
-                                <div className="container">
                                     <div className="row">
-                                        <div className="col-sm-8">
-                                            <ProductInfo product={this.state.book}/>
-                                            <Review reviews={this.state.reviews}/>
-                                        </div>
+                                        <ProductInfo product={this.state.book} />
+                                        <Review reviews={this.state.book.reviews} />
                                     </div>
-                                </div>
+                                
                             );
                         }
                     })()}
