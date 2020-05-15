@@ -34,7 +34,7 @@ export class Review extends Component {
 
         reviews.forEach( review => 
             reviewDivs.push(
-                <div className="card-body">
+                <div key={review.id} className="card-body">
                     <div className="float-left mr-3">
                         
                     </div>

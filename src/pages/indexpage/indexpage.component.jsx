@@ -12,7 +12,8 @@ export class IndexPage extends Component {
     };
 
     async componentDidMount() {
-        const url = 'http://localhost:3333/items';
+        const url = 'http://localhost:3000/books';
+
         const response = await fetch(url, {
             headers: {
                 'Content-Type' : 'application/json',
@@ -20,9 +21,6 @@ export class IndexPage extends Component {
             }
         });
         const json = await response.json();
-
-        console.log(json);
-        
 
        this.setState({books: json}); 
     }
@@ -42,8 +40,8 @@ export class IndexPage extends Component {
                         } else {
                             return (
                                     <div className="row">
-                                    {this.state.books.map(book => (
-                                        <div className='col-sm-4'>
+                                    {this.state.books.map((book, index) => (
+                                        <div key={index} className='col-sm-4'>
                                             <ItemCard key={book.id} item={book} />
                                         </div>
                                     ))}

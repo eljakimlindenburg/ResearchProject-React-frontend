@@ -26,6 +26,11 @@ export class ProductInfo extends Component {
                 stars.push(<i className="far fa-star fa-sm"/>)
             }
         }
+        return (
+            stars.map((star, index) => (
+                <i key={index}>{star}</i>
+            ))
+        );
     };
 
     render() {

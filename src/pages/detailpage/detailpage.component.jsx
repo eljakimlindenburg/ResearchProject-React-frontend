@@ -15,7 +15,7 @@ export class DetailPage extends Component {
 
     async componentDidMount(){
         const { id } = this.props.match.params;
-        const url = 'http://localhost:3333/items/'+ id;
+        const url = 'http://localhost:3000/books/'+ id;
         const response = await fetch(url, {
                 headers: {
                     'Content-Type' : 'application/json',
