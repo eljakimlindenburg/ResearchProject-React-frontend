@@ -4,7 +4,6 @@ import {Route, Switch} from "react-router-dom";
 import IndexPage from "../../pages/indexpage/indexpage.component";
 import ShoppingCart from "../../pages/shoppingcart/shoppingcart.component";
 import DetailPage from "../../pages/detailpage/detailpage.component";
-import NavMenu from "../navmenu/navmenu.component";
 
 export const MainLayout = () => (
     <div>

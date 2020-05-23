@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ItemCard} from "../../shared/itemcard/itemcard.component";
+import ItemCard from "../../shared/itemcard/itemcard.component";
 
 export class IndexPage extends Component {
 

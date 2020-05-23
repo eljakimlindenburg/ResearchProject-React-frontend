@@ -1,53 +1,42 @@
-import React, {Component} from "react";
+import React from "react";
 
-export class ProductInfo extends Component {
-    constructor(props) {
-        super(props);
+const ProductInfo = ({product}) => {
 
-        this.state = {
-            product: props.product
+    const {average_rating, image_src, title, price, desc} = product;
+
+    let stars = [];
+    const averageRating = {average_rating};
+    const nrOfStars = Math.floor(averageRating.average_rating);
+    const maxStars = 5;
+    for (let i = 0; i < nrOfStars; i++) {
+        stars.push(<i key={i} className='fas fa-star fa-sm' style={{color: '#ffd800'}}/>);
+    }
+    if (maxStars > nrOfStars) {
+        let starsLeft = maxStars - nrOfStars;
+        for (let j = 0; j < starsLeft; j++) {
+            stars.push(<i key={j+10} className='far fa-star fa-sm'/>);
         }
+    }
 
-        console.log(this.state.product);
-    };
-
-
-    createStars = () => {
-        let stars = [];
-        const nrOfStars = this.state.product.average_rating;
-        const maxStars = 5;
-        for (var i = 0; i < nrOfStars; i++) {
-            stars.push(<i className="fas fa-star fa-sm" style={{color: "#ffd800"}}/>)
-        }
-        if (maxStars > nrOfStars) {
-            var starsLeft = maxStars - nrOfStars;
-            for (var j = 0; j < starsLeft; j++)
-            {
-                stars.push(<i className="far fa-star fa-sm"/>)
-            }
-        }
-        return (
-            stars.map((star, index) => (
-                <i key={index}>{star}</i>
-            ))
-        );
-    };
-
-    render() {
-        return (
-            <div className="card" id="productInfo">
-                <img src={this.state.product.image_src} alt="" className="card-img-top" style={{maxHeight: "400px"}}/>
-                <div className="card-body">
-                    <h1 className="card-title text-primary">{this.state.product.title}</h1>
-                    <h2 className="card-price">€{this.state.product.price}</h2>
-                    <p className="card-text">{this.state.product.desc}</p>
-                </div>
-                <div className="card-body">
-                    {this.createStars()}
+    return (
+        <div className="card" id="productInfo">
+            <img src={image_src} alt="" className="card-img-top" style={{maxHeight: "400px"}}/>
+            <div className="card-body">
+                <h1 className="card-title text-primary">{title}</h1>
+                <h2 className="card-price">€{price}</h2>
+                <p className="card-text">{desc}</p>
+            </div>
+            <div className="card-body">
+                <div className="float-left">
+                    {
+                        stars.map((star, index) => (
+                            <i key={index}>{star}</i>
+                        ))
+                    }
                 </div>
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
 export default ProductInfo;

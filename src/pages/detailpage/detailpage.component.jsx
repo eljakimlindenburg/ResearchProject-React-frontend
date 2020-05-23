@@ -7,53 +7,45 @@ export class DetailPage extends Component {
         super(props);
 
         this.state = {
-            book: null,
-            //book: this.props,
-            test: "one and a two"
+            book: null
         }
     };
 
-    async componentDidMount(){
-        const { id } = this.props.match.params;
-        const url = 'http://localhost:3000/books/'+ id;
+    async componentDidMount() {
+        const {id} = this.props.match.params;
+        const url = 'http://localhost:3000/books/' + id;
         const response = await fetch(url, {
-                headers: {
-                    'Content-Type' : 'application/json',
-                    'Accept': 'application/json'
-                }
-            });
-        
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
         const json = await response.json();
 
-        this.setState({book: json}); 
-
-        console.log(this.state.book);
+        this.setState({book: json});
     }
 
     render() {
-        const book = [this.state.book];
         return (
-            <div className='container'>
-                <div className='row'>
-                   
-                   {(() => {
-                        if (this.state.book == null) {
-                            return (
+            <div>
+                {(() => {
+                    if (this.state.book == null) {
+                        return (
+                            <span><em>Loading...</em></span>
+                        )
+                    } else {
+                        return (
+                            <div className="container">
                                 <div className="row">
-                                    <p><em>Loading...</em></p>
-                                </div>
-                            )
-                        } else {
-                            return (
-                                    <div className="row">
-                                        <ProductInfo product={this.state.book} />
-                                        <Review reviews={this.state.book.reviews} />
+                                    <div className="col-sm-8">
+                                        <ProductInfo product={this.state.book}/>
+                                        <Review reviews={this.state.book.reviews}/>
                                     </div>
-                                
-                            );
-                        }
-                    })()}
-                </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                })()}
             </div>
         );
     }
