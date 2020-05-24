@@ -2,10 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {removeItem} from '../../redux/cart/cart.actions';
-import {selectCartTotal} from "../../redux/cart/cart.selectors";
 
-const CheckoutItem = ({cartItem, total, removeItem}) => {
-    const {image_src, productTitle} = cartItem;
+const CheckoutItem = ({cartItem, removeItem}) => {
+    const {image_src, productTitle, price} = cartItem;
     let {quantity} = cartItem;
     return (
         <div className="card-body">
@@ -13,7 +12,7 @@ const CheckoutItem = ({cartItem, total, removeItem}) => {
                 <img src={image_src} className="shoppingcart-item" alt=""/>
             </div>
             <div className="float-left">
-                <h3 className="card-price">EUR {total}</h3>
+                <h3 className="card-price">EUR {price}</h3>
                 <h4 className="text-primary">{productTitle}</h4>
 
                 <div className="Quantity">
@@ -42,7 +41,6 @@ const CheckoutItem = ({cartItem, total, removeItem}) => {
 
 const mapDispatchToProps = dispatch => ({
     removeItem: item => dispatch(removeItem(item)),
-    total: selectCartTotal
 });
 
 export default connect(
