@@ -13,7 +13,7 @@ export const CustomHeader = () => (
                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
 
-            <NavLink to="/shop" className="nav-link text-light" href="ShoppingCart">
+            <NavLink to="/shoppingcart" className="nav-link text-light" href="ShoppingCart">
                 <i className="fas fa-2x fa-shopping-cart float-right text-white"/>
             </NavLink>
         </div>

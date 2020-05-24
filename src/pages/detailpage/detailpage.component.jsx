@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import ProductInfo from "../../shared/productinfo/productinfo.component";
-import Review from "../../shared/review/review.component";
+import Reviews from "../../shared/reviews/reviews.component";
 
 export class DetailPage extends Component {
     constructor(props) {
@@ -39,7 +39,7 @@ export class DetailPage extends Component {
                                 <div className="row">
                                     <div className="col-sm-8">
                                         <ProductInfo product={this.state.book}/>
-                                        <Review reviews={this.state.book.reviews}/>
+                                        <Reviews reviews={this.state.book.reviews}/>
                                     </div>
                                 </div>
                             </div>

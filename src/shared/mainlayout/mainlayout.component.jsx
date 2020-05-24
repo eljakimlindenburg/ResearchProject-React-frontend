@@ -13,7 +13,7 @@ export const MainLayout = () => (
         <main className="main">
             <Switch>
                 <Route exact path='/' component={IndexPage}/>
-                <Route exact path='/shop' component={ShoppingCart} />
+                <Route exact path='/shoppingcart' component={ShoppingCart} />
                 <Route exact path='/detail' component={DetailPage}/>
                 <Route path="/detail/:id" component={DetailPage} />
             </Switch>
