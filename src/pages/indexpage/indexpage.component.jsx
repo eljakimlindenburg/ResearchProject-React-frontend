@@ -46,7 +46,6 @@ export class IndexPage extends Component {
                                         </div>
                                     ))}
                                     </div>
-                                
                             );
                         }
                     })()}

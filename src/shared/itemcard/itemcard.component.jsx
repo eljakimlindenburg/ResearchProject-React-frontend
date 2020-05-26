@@ -8,6 +8,7 @@ import './itemcard.component.css';
 
 const ItemCard = ({item, addItem}) => {
     const {id, title, price, image_src, desc} = item;
+
     let showPopUp = false;
     let showBackDrop = false;
     let modalClass = "";
@@ -51,7 +52,7 @@ const ItemCard = ({item, addItem}) => {
                 </div>
             </div>
             {(() => {
-                if (showPopUp === true) {
+                if ({showPopUp} === true) {
                     return (
                         <div className={"modal " + modalClass} tabIndex="-1" role="dialog"
                              style={"display:" + modalDisplay}>
@@ -67,7 +68,9 @@ const ItemCard = ({item, addItem}) => {
                                         <p>Dit product is toegevoegd aan je winkelmand</p>
                                     </div>
                                     <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Sluit dit venster</button>
+                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Sluit
+                                            dit venster
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +79,7 @@ const ItemCard = ({item, addItem}) => {
                 }
             })()}
             {(() => {
-                if (showBackDrop === true) {
+                if ({showBackDrop} === true) {
                     return (
                         <div className="modal-backdrop fade show"/>
                     )
@@ -91,23 +94,27 @@ const ItemCard = ({item, addItem}) => {
         showBackDrop = true;
         waitOneAndAHalfSeconds();
         showPopUp = false;
-        closePopUp();
+        console.log(modalClass, modalDisplay, showBackDrop, showPopUp)
     }
 
     function closePopUp() {
         modalClass = "";
         modalDisplay = "block";
         showBackDrop = false;
+        console.log(modalClass, modalDisplay, showBackDrop);
     }
 
     function waitOneAndAHalfSeconds() {
-        const timer = setTimeout(() => 1500);
+        console.log("before");
+        const timer = setTimeout(() => closePopUp,1500);
+        console.log("after");
         return () => clearTimeout(timer);
     }
 
     function addItemAndOpenPopUp() {
         addItem(item);
         openPopUp();
+        console.log("addItemAndOpenPopUp");
     }
 };
 
