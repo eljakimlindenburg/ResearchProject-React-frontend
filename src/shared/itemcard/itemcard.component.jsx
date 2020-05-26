@@ -16,8 +16,8 @@ const ItemCard = ({item, addItem}) => {
     return (
         <div>
             <div className='card'>
-                <img src={image_src} alt="" className="card-img-top"/>
                 <div className='card-body'>
+                    <img src={image_src} alt="" className="card-img-top"/>
                     <h3 className='card-title text-primary'>
                         <Link to={{
                             pathname: '/detail/' + id,
@@ -51,25 +51,23 @@ const ItemCard = ({item, addItem}) => {
                 </div>
             </div>
             {(() => {
-                if (showPopUp) {
+                if (showPopUp === true) {
                     return (
                         <div className={"modal " + modalClass} tabIndex="-1" role="dialog"
                              style={"display:" + modalDisplay}>
                             <div className="modal-dialog" role="document">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h5 className="modal-title">Modal title</h5>
+                                        <h5 className="modal-title">{title} toegevoegd aan het winkelmandje</h5>
                                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div className="modal-body">
-                                        <p>Modal body text goes here.</p>
+                                        <p>Dit product is toegevoegd aan je winkelmand</p>
                                     </div>
                                     <div className="modal-footer">
-                                        <button type="button" className="btn btn-primary">Save changes</button>
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close
-                                        </button>
+                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Sluit dit venster</button>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +76,7 @@ const ItemCard = ({item, addItem}) => {
                 }
             })()}
             {(() => {
-                if (showBackDrop) {
+                if (showBackDrop === true) {
                     return (
                         <div className="modal-backdrop fade show"/>
                     )
@@ -91,7 +89,7 @@ const ItemCard = ({item, addItem}) => {
         modalClass = "show";
         modalDisplay = "block";
         showBackDrop = true;
-        wait2Seconds();
+        waitOneAndAHalfSeconds();
         showPopUp = false;
         closePopUp();
     }
@@ -102,8 +100,8 @@ const ItemCard = ({item, addItem}) => {
         showBackDrop = false;
     }
 
-    function wait2Seconds() {
-        const timer = setTimeout(() => 2000);
+    function waitOneAndAHalfSeconds() {
+        const timer = setTimeout(() => 1500);
         return () => clearTimeout(timer);
     }
 
