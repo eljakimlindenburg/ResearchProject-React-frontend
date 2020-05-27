@@ -1,6 +1,6 @@
 
 
-## Jsonserver
+## `Jsonserver`
 
 First clone the Jsonserver project that you can also find on this GitHub profile. Install json-server and open the folder /json_pages.
 
@@ -10,7 +10,7 @@ It should automatically start on port 3000.
 
 ## In the project directory, you can run:
 
-### npm install
+### `npm install`
 
 It might be necessary to run npm install first to install all the required libraries and dependencies. 
 
@@ -22,14 +22,3 @@ A browser window should open automatically.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
-
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
