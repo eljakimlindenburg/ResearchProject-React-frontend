@@ -9,6 +9,10 @@ import './itemcard.component.css';
 const ItemCard = ({item, addItem}) => {
     const {id, title, price, image_src, desc} = item;
 
+    function addItemNow() {
+        addItem(item);
+    }
+
     return (
         <div className='card'>
             <div className='card-body'>
@@ -41,7 +45,7 @@ const ItemCard = ({item, addItem}) => {
                     </button>
 
                     <button className="btn btn-primary"
-                            onClick={addItem(item)}>
+                            onClick={addItemNow}>
                         <i className="fas fa-shopping-basket fa-sm"/>
                     </button>
                 </div>
