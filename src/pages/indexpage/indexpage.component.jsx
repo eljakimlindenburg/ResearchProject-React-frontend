@@ -16,41 +16,41 @@ export class IndexPage extends Component {
 
         const response = await fetch(url, {
             headers: {
-                'Content-Type' : 'application/json',
+                'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
         });
         const json = await response.json();
 
-       this.setState({books: json}); 
+        this.setState({books: json});
     }
 
     render() {
         const books = [this.state.books];
         return (
             <div className='container'>
-                
+                <div className='row'>
                     {(() => {
                         if (books == null) {
                             return (
-                                <div className="row">
+                                <div>
                                     <p><em>Loading...</em></p>
                                 </div>
                             )
                         } else {
                             return (
-                                    <div className="row">
+                                <div>
                                     {this.state.books.map((book, index) => (
                                         <div key={index} className='col-sm-4'>
-                                            <ItemCard key={book.id} item={book} />
+                                            <ItemCard key={book.id} item={book}/>
                                         </div>
                                     ))}
-                                    </div>
-                                
+                                </div>
                             );
                         }
                     })()}
                 </div>
+            </div>
         );
     }
 }

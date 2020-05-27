@@ -20,12 +20,14 @@ const ProductInfo = ({product}) => {
 
     return (
         <div className="card" id="productInfo">
-            <img src={image_src} alt="" className="card-img-top" style={{maxHeight: "400px"}}/>
+
+            <img src={image_src} alt="" className="card-img-top"/>
             <div className="card-body">
                 <h1 className="card-title text-primary">{title}</h1>
                 <h2 className="card-price">€{price}</h2>
                 <p className="card-text">{desc}</p>
             </div>
+
             <div className="card-body">
                 <div className="float-left">
                     {

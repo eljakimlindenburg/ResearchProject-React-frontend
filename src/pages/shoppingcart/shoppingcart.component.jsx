@@ -52,12 +52,10 @@ const ShoppingCart = ({cartItems, total}) => {
                             <div className="container">
                                 <div className="row">
                                     <div className="col-sm-6">
-                                        <h4 className="text-secondary">Delivery</h4>
-                                        <h4 className="text-secondary">Sub total</h4>
+                                        <h4 className="text-secondary">Total</h4>
                                     </div>
                                     <div className="col-sm-6">
                                         <p className="text-secondary">€{total}</p>
-                                        <p className="text-secondary">?</p>
                                     </div>
                                 </div>
                             </div>
