@@ -21,7 +21,6 @@ export class IndexPage extends Component {
             }
         });
         const json = await response.json();
-
         this.setState({books: json});
     }
 
@@ -33,13 +32,13 @@ export class IndexPage extends Component {
                     {(() => {
                         if (books == null) {
                             return (
-                                <div>
+                                <div className='row'>
                                     <p><em>Loading...</em></p>
                                 </div>
                             )
                         } else {
                             return (
-                                <div>
+                                <div className='row'>
                                     {this.state.books.map((book, index) => (
                                         <div key={index} className='col-sm-4'>
                                             <ItemCard key={book.id} item={book}/>
