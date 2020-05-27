@@ -2,7 +2,9 @@
 
 ## `Jsonserver`
 
-First clone the Jsonserver project that you can also find on this GitHub profile. Install json-server and open the folder /json_pages.
+First clone the Jsonserver project that you can also find on this GitHub profile. 
+
+Install json-server and open the folder /json_pages.
 
 Then start json-server using the command: json-server -p 3000 db.json
 
