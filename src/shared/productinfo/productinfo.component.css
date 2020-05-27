@@ -1,3 +1,7 @@
 .far, .fas{
     font-family: FontAwesome !important;
 }
+
+img {
+    max-height: 400px;
+}

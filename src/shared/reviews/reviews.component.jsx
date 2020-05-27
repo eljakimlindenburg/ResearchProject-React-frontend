@@ -53,7 +53,7 @@ const Reviews = ({reviews}) => {
 
     return (
         <div className="card mt-3">
-            <div className="card-header">Reviews>
+            <div className="card-header">Reviews
                 {(() => {
                     if (reviews == null) {
                         return (

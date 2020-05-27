@@ -20,5 +20,3 @@ export const CustomHeader = () => (
     </nav>
 );
 
-export default CustomHeader;
-
